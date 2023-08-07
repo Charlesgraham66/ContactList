@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
+import ContactList from './components/ContactList.jsx';
+import dummyContacts from './components/ContactList.jsx'
+import './App.css';
 
-import './App.css'
 
-function App() {
-
+export default function App() {
+  // const [contacts, setContacts] = useState(dummyContacts)
+  // console.log("Contacts: ", contacts);
   return (
-    <div>
+    <>
       <ContactList />
-    </div>
+    </>
   );
 }
-
-export default App
