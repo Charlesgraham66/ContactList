@@ -3,8 +3,8 @@ import React from "react"
 import ContactRow from './ContactRow';
 import { useState, useEffect } from 'react';
 
-export default function SelectedContact({selectedContactId, setSelectedContactId})  {
-    const [contact, setContact] = useState([]);
+const SelectedContact = ({selectedContactId, setSelectedContactId}) => {
+    const [contact, setContact] = useState(null);
 
     useEffect(() => {
         async function fetchContact() {
@@ -18,7 +18,7 @@ export default function SelectedContact({selectedContactId, setSelectedContactId
             } 
         }
         fetchContact()
-    }, [])
+    }, [selectedContactId])
 
     
 return (
@@ -28,16 +28,30 @@ return (
     <table>
     <thead>
         <tr>
-            <th colSpan="3">Contact List</th>
+            <th colSpan="6">Contact List</th>
         </tr>
-    </thead>
-    <tbody>
         <tr>
             <td>name</td>
             <td>Email</td>
             <td>Phone</td>
+            <td>Website</td>
+            <td>Username</td>
+            <td>address</td>
         </tr>
-        <ContactRow key={contact.id} contact={contact} setSelectedContactId={setSelectedContactId}/>
+    </thead>
+    <tbody>
+        
+        {/* <ContactRow key={contact.id} contact={contact} setSelectedContactId={setSelectedContactId}/> */}
+    </tbody>
+    <tbody>
+        <tr className="list">
+            <td>{contact?.name}</td>
+            <td>{contact?.email}</td>
+            <td>{contact?.phone}</td>
+            <td>{contact?.website}</td>
+            <td>{contact?.username}</td>
+            <td>{contact?.address.city}</td>
+        </tr>
     </tbody>
     </table>
         <button onClick={() => setSelectedContactId(null)}>Back to List</button>
@@ -46,6 +60,6 @@ return (
 )
 }
 
-
+export default SelectedContact
 
 

@@ -53,6 +53,7 @@ import { useState, useEffect } from "react"
                     )
                 }
             </tbody>
+            
         </table>
     );
 }  
